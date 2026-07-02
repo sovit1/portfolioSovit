@@ -50,7 +50,7 @@ export const DATA = {
   locationLink: "https://www.google.com/maps/place/Hyderabad",
   description: "System Software Engineer",
   summary:
-    "I am a System/Embedded engineer focused on firmware, hardware-software integration, and low-level device programming. My experience spans bare-metal drivers, Linux device drivers, battery management systems, sensor interfacing, and PCB design for embedded products.",
+    "I am a System/Embedded software engineer focused on firmware, hardware-software integration, and low-level device programming. My experience spans bare-metal drivers, Linux device drivers, battery management systems, sensor interfacing, and PCB design for embedded products.",
   avatarUrl: "/DSC_0517.png",
   skillGroups: [
     {
