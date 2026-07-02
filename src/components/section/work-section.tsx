@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Timeline, TimelineConnectItem, TimelineItem } from "@/components/timeline";
 import { DATA } from "@/data/resume";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -27,6 +26,20 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function WorkSection() {
+  const handleCardOpen = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const handleCardKeyDown = (
+    event: KeyboardEvent<HTMLElement>,
+    url: string
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleCardOpen(url);
+    }
+  };
+
   return (
     <Timeline className="p-0">
       {DATA.work.map((work) => (
@@ -40,7 +53,13 @@ export default function WorkSection() {
           >
             <LogoImage src={work.logoUrl} alt={work.company} />
           </TimelineConnectItem>
-          <article className="flex flex-1 flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:ring-2 hover:ring-muted">
+          <article
+            role="button"
+            tabIndex={0}
+            onClick={() => handleCardOpen(work.href)}
+            onKeyDown={(event) => handleCardKeyDown(event, work.href)}
+            className="group flex flex-1 flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.25)] hover:border-foreground/20 hover:ring-2 hover:ring-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
+          >
             <div className="flex items-start justify-between gap-3">
               <div className="flex min-w-0 flex-col gap-1">
                 <div className="flex flex-wrap items-center gap-2">
@@ -64,15 +83,12 @@ export default function WorkSection() {
                   <span>{work.location}</span>
                 </div>
               </div>
-              <Link
-                href={work.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              <div
+                className="text-muted-foreground hover:text-foreground transition-colors rounded-sm"
                 aria-label={`Open ${work.company}`}
               >
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </Link>
+              </div>
             </div>
             <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
               {work.description
