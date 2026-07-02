@@ -5,25 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useState, type KeyboardEvent } from "react";
-import Markdown from "react-markdown";
-
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
-  const [imageError, setImageError] = useState(false);
-
-  if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-      onError={() => setImageError(true)}
-    />
-  );
-}
+import { type KeyboardEvent } from "react";
 
 interface Props {
   title: string;
@@ -67,6 +49,11 @@ export function ProjectCard({
     }
   };
 
+  const bulletPoints = description
+    .split(/\n+/)
+    .map((line) => line.replace(/^[-*]\s*/, "").trim())
+    .filter(Boolean);
+
   return (
     <div
       role="button"
@@ -78,25 +65,28 @@ export function ProjectCard({
         className
       )}
     >
-      <div className="relative shrink-0">
-        <div className="block">
-          {video ? (
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            />
-          ) : image ? (
-            <ProjectImage src={image} alt={title} />
-          ) : (
-            <div className="w-full h-48 bg-muted" />
-          )}
+      <div className="p-6 flex flex-col gap-3 flex-1">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex flex-col gap-1">
+            <h3 className="font-semibold">{title}</h3>
+            <time className="text-xs text-muted-foreground">{dates}</time>
+          </div>
+          <div
+            className="text-muted-foreground hover:text-foreground transition-colors rounded-sm"
+            aria-label={`Open ${title}`}
+          >
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </div>
         </div>
+        <ul className="flex-1 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+          {bulletPoints.map((point) => (
+            <li key={point} className="text-pretty">
+              {point}
+            </li>
+          ))}
+        </ul>
         {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {links.map((link, idx) => (
               <Link
                 href={link.href}
@@ -116,23 +106,6 @@ export function ProjectCard({
             ))}
           </div>
         )}
-      </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
-          </div>
-          <div
-            className="text-muted-foreground hover:text-foreground transition-colors rounded-sm"
-            aria-label={`Open ${title}`}
-          >
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </div>
-        </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-          <Markdown>{description}</Markdown>
-        </div>
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">
             {tags.map((tag) => (

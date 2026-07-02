@@ -18,7 +18,10 @@ export default function HackathonsSection() {
           </div>
         </div>
         <Timeline className="p-0">
-          {DATA.hackathons.map((hackathon) => (
+          {DATA.hackathons.map((hackathon) => {
+            const result = "result" in hackathon ? (hackathon as { result?: string }).result : undefined;
+
+            return (
             <TimelineItem key={hackathon.title + hackathon.dates} className="w-full flex items-stretch gap-4 sm:gap-6">
               <TimelineConnectItem
                 className="items-start pt-5"
@@ -46,12 +49,12 @@ export default function HackathonsSection() {
                       {hackathon.location && <span>{hackathon.location}</span>}
                     </div>
                   </div>
-                  {hackathon.result && (
+                  {result && (
                     <Badge
                       variant="outline"
                       className="h-6 shrink-0 px-2.5 text-[11px] font-semibold"
                     >
-                      {hackathon.result}
+                      {result}
                     </Badge>
                   )}
                 </div>
@@ -79,7 +82,8 @@ export default function HackathonsSection() {
                 )}
               </article>
             </TimelineItem>
-          ))}
+            );
+          })}
         </Timeline>
       </div>
     </section>

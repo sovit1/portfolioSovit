@@ -28,13 +28,13 @@ type HackathonLink = {
 };
 
 /*TODO: Add images/videos to github projects
-Work Experience change style - done
-change description for hackathons..put achievements
-add icons to achievements
-Add more achievemnts and for ojee rank 1 provide links
+
+
+
+
 fix the broken mail link
-change the get in touch part
-default light mode to dark mode
+
+
 */
 
 
@@ -139,9 +139,9 @@ export const DATA = {
 
         navbar: true,
       },
-      email: {
+      Email: {
         name: "Gmail",
-        url: "mailto:sovitpatel80@gmail.com",
+        url: "https://mail.google.com/mail/?view=cm&fs=1&to=sovitpatel80@gmail.com",
         icon: Icons.email,
         navbar: true,
       },
@@ -188,49 +188,49 @@ export const DATA = {
   projects: [
     {
       title: "Character device driver",
-      href: "https://github.com/sovit1",
+      href: "https://github.com/sovit1/CharacterDeviceDriver",
       dates: "Kernel / Linux Embedded",
       active: true,
       description:
         "Developed a Linux character device driver as a loadable kernel module handling open, read, write, and release operations for kernel-user space interaction, along with a test user-space application.",
       technologies: ["C", "Make", "GCC", "Buildroot", "BusyBox", "U-Boot", "BeagleBone Black"],
-      links: [{ type: "GitHub", href: "https://github.com/sovit1", icon: <Icons.github className="size-3" /> }],
+      links: [{ type: "GitHub", href: "https://github.com/sovit1/CharacterDeviceDriver", icon: <Icons.github className="size-3" /> }],
       image: "",
       video: "",
     },
     {
       title: "MPU6050 I2C Driver Application",
-      href: "https://github.com/sovit1",
+      href: "https://github.com/sovit1/MPU6050_BeagleBone_Interface",
       dates: "Embedded Linux / Sensor Interfaces",
       active: true,
       description:
         "Built a Linux userspace C application to acquire raw accelerometer data from an MPU6050 over I2C, using ioctl() for communication and GCC Linaro for cross-compilation on BeagleBone Black.",
       technologies: ["C", "GCC Linaro", "I2C", "BeagleBone Black", "SSH"],
-      links: [{ type: "GitHub", href: "https://github.com/sovit1", icon: <Icons.github className="size-3" /> }],
+      links: [{ type: "GitHub", href: "https://github.com/sovit1/MPU6050_BeagleBone_Interface", icon: <Icons.github className="size-3" /> }],
       image: "",
       video: "",
     },
     {
       title: "Bare-Metal GPIO Driver",
-      href: "https://github.com/sovit1",
+      href: "https://github.com/sovit1/BareMetalKeypad",
       dates: "STM32 / Bare-metal",
       active: true,
       description:
         "Programmed a bare-metal GPIO driver for a 4x4 matrix keypad on STM32F407 to detect key-press status and support embedded input handling.",
       technologies: ["C", "STM32F407", "Bare-metal", "GPIO"],
-      links: [{ type: "GitHub", href: "https://github.com/sovit1", icon: <Icons.github className="size-3" /> }],
+      links: [{ type: "GitHub", href: "https://github.com/sovit1/BareMetalKeypad", icon: <Icons.github className="size-3" /> }],
       image: "",
       video: "",
     },
     {
       title: "Titan Future Wear Hackathon",
-      href: "https://github.com/sovit1",
+      href: "https://github.com/sovit1/Smartwatch",
       dates: "IoT / Wearables",
       active: true,
       description:
         "Built a low-cost smartwatch prototype using ESP32 with SpO2, heart-rate, and accelerometer sensors for step counting and Firebase-based real-time data transmission.",
       technologies: ["IoT", "ESP32", "Firebase", "C", "Eagle"],
-      links: [{ type: "GitHub", href: "https://github.com/sovit1", icon: <Icons.github className="size-3" /> }],
+      links: [{ type: "GitHub", href: "https://github.com/sovit1/Smartwatch", icon: <Icons.github className="size-3" /> }],
       image: "",
       video: "",
     },
@@ -243,7 +243,6 @@ export const DATA = {
       description:
         "Built a 3-wheeled holonomic drive robot controlled via ROS and ESP32 over UDP for smooth omnidirectional motion and low-latency wireless control.",
       image: "/eyantra.svg",
-      result: "Participant",
       links: [] as HackathonLink[],
     },
     {
@@ -253,7 +252,6 @@ export const DATA = {
       description:
         "Worked on a stress-sensor ideation project and secured runners-up position in the competition.",
       image: "/TIH-logo-scaled.webp",
-      result: "Runner-up",
       links: [] as HackathonLink[],
     },
     {
@@ -263,7 +261,6 @@ export const DATA = {
       description:
         "Worked on ANPR, speed detection systems and generating e-challan for over-speeding vehicles",
       image: "/ugFellow.jpg",
-      result: "Awarded",
       links: [] as HackathonLink[],
     },
     {
@@ -273,7 +270,6 @@ export const DATA = {
       description:
         "Participated in the road-safety and management challenge and achieved runners-up position.",
       image: "/devbhoomi.jpeg",
-      result: "Runner-up",
       links: [] as HackathonLink[],
     },
     {
@@ -283,17 +279,28 @@ export const DATA = {
       description:
         "Achieved Rank 1 among 40K students in the entrance exam for state government colleges of Odisha in the subjects of Mathematics, Physics and Chemistry.",
       image: "/odishaGOV.png",
-      result: "Rank 1",
       links: [
         {
           title: "Times of India",
           href: "https://timesofindia.indiatimes.com/education/news/ojee-2020-results-announced-sovit-patel-btech-topper/articleshow/79082971.cms",
-          icon: <Icons.globe className="size-3" />,
+          icon: (
+            <img
+              src="/toi.png"
+              alt="Times of India"
+              className="h-3.5 w-3.5 object-contain"
+            />
+          ),
         },
         {
-          title: "Indian Express",
+          title: "The Indian Express",
           href: "https://indianexpress.com/article/education/odisha-ojee-result-2020-released-ojee-nic-in-6980864/",
-          icon: <Icons.globe className="size-3" />,
+          icon: (
+            <img
+              src="/express.png"
+              alt="Indian Express"
+              className="h-3.5 w-3.5 object-contain"
+            />
+          ),
         },
       ],
     },
