@@ -48,9 +48,9 @@ export const DATA = {
   url: "https://github.com/sovit1",
   location: "Hyderabad, India",
   locationLink: "https://www.google.com/maps/place/Hyderabad",
-  description: "System/Low-Level Software Engineer",
+  description: "System Software Engineer",
   summary:
-    "I am an embedded systems engineer focused on firmware, hardware-software integration, and low-level device programming. My experience spans bare-metal drivers, Linux userspace applications, battery management systems, sensor interfacing, and PCB design for embedded products.",
+    "I am a System/Embedded engineer focused on firmware, hardware-software integration, and low-level device programming. My experience spans bare-metal drivers, Linux device drivers, battery management systems, sensor interfacing, and PCB design for embedded products.",
   avatarUrl: "/DSC_0517.png",
   skillGroups: [
     {
