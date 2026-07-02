@@ -1,8 +1,25 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { C } from "@/components/ui/svgs/c";
 import { Python } from "@/components/ui/svgs/python";
-import { Csharp } from "@/components/ui/svgs/csharp";
+import {
+  Boxes,
+  Braces,
+  Bug,
+  CircuitBoard,
+  Code2,
+  Cpu,
+  GitBranch,
+  GitFork,
+  HomeIcon,
+  Keyboard,
+  MonitorCog,
+  Rocket,
+  Terminal,
+  Wifi,
+  Workflow,
+  Wrench,
+} from "lucide-react";
+import type { ReactNode } from "react";
 
 type HackathonLink = {
   title: string;
@@ -10,28 +27,96 @@ type HackathonLink = {
   icon: ReactNode;
 };
 
+/*TODO: Add images/videos to github projects
+Work Experience change style - done
+change description for hackathons..put achievements
+add icons to achievements
+Add more achievemnts and for ojee rank 1 provide links
+fix the broken mail link
+change the get in touch part
+default light mode to dark mode
+*/
+
+
+
+const iconClassName = "size-4 shrink-0";
+const skill = (name: string, icon: ReactNode) => ({ name, icon });
+
 export const DATA = {
   name: "Sovit Patel",
   initials: "SP",
   url: "https://github.com/sovit1",
   location: "Hyderabad, India",
   locationLink: "https://www.google.com/maps/place/Hyderabad",
-  description: "Embedded Engineer | Low-Level Programming",
+  description: "System/Low-Level Software Engineer",
   summary:
     "I am an embedded systems engineer focused on firmware, hardware-software integration, and low-level device programming. My experience spans bare-metal drivers, Linux userspace applications, battery management systems, sensor interfacing, and PCB design for embedded products.",
-  avatarUrl: "\DSC_0517.png",
-  skills: [
-    { name: "C", icon: Csharp },
-    { name: "C++", icon: Csharp },
-    { name: "Python", icon: Python },
-    { name: "Embedded Linux", icon: Icons.github },
-    { name: "Bare-metal", icon: Csharp },
-    { name: "KiCad", icon: Csharp },
-    { name: "STM32", icon: Csharp },
-    { name: "ESP32", icon: Csharp },
-    { name: "TI C2000", icon: Csharp },
-    { name: "Git", icon: Icons.github },
-    { name: "Make / Buildroot", icon: Icons.github },
+  avatarUrl: "/DSC_0517.png",
+  skillGroups: [
+    {
+      title: "Languages",
+      items: [
+        skill("C", <C className={iconClassName} />),
+        skill("C++", <Code2 className={iconClassName} />),
+        skill("Python", <Python className={iconClassName} />),
+      ],
+    },
+    {
+      title: "Tools",
+      items: [
+        skill("Make", <Terminal className={iconClassName} />),
+        skill("Buildroot", <Boxes className={iconClassName} />),
+        skill("GCC", <Wrench className={iconClassName} />),
+        skill("GCC Linaro", <Wrench className={iconClassName} />),
+      ],
+    },
+    {
+      title: "Bootloader",
+      items: [skill("U-Boot", <Rocket className={iconClassName} />)],
+    },
+    {
+      title: "Collaboration",
+      items: [
+        skill("Git", <GitBranch className={iconClassName} />),
+        skill("GitHub", <Icons.github className={iconClassName} />),
+        skill("GitLab", <GitFork className={iconClassName} />),
+      ],
+    },
+    {
+      title: "IDE / Text Editors",
+      items: [
+        skill("VS Code", <Braces className={iconClassName} />),
+        skill("Eclipse-based IDEs", <MonitorCog className={iconClassName} />),
+        skill("Vim", <Keyboard className={iconClassName} />),
+      ],
+    },
+    {
+      title: "PCB Design",
+      items: [
+        skill("KiCad", <CircuitBoard className={iconClassName} />),
+        skill("Eagle", <CircuitBoard className={iconClassName} />),
+      ],
+    },
+    {
+      title: "Embedded Devices / MCUs",
+      items: [
+        skill("BeagleBone Black", <Cpu className={iconClassName} />),
+        skill("STM32F407", <Cpu className={iconClassName} />),
+        skill("TI C2000", <Cpu className={iconClassName} />),
+        skill("Arduino", <Cpu className={iconClassName} />),
+        skill("ESP32", <Wifi className={iconClassName} />),
+      ],
+    },
+    {
+      title: "Experience with",
+      items: [
+        skill("Bare-metal Programming", <Cpu className={iconClassName} />),
+        skill("Linux", <Terminal className={iconClassName} />),
+        skill("PCB Designing", <CircuitBoard className={iconClassName} />),
+        skill("Algorithm Design", <Workflow className={iconClassName} />),
+        skill("Debugging", <Bug className={iconClassName} />),
+      ],
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -66,23 +151,36 @@ export const DATA = {
   work: [
     {
       company: "WCB Robotics",
-      href: "https://www.linkedin.com/company/wcb-robotics/",
-      badges: [],
+      href: "https://www.linkedin.com/company/wcb-robotics-inc/",
+      badges: [" 6M + Full time"],
       location: "Hyderabad, India",
       title: "Embedded Engineer",
-      logoUrl: "/me.png",
+      logoUrl: "/wcbVS.png",
       start: "Jan 2025",
       end: "Dec 2025",
       description:
-        "• Developed firmware and hardware support for battery management workflows.\n• Worked on embedded control logic, sensor integration, and system debugging.\n• Contributed to PCB-related design validation and testing for prototype hardware.\n• Collaborated on improving charging, balancing, and monitoring functionality for embedded systems.",
+        "- Developed firmware and hardware support for battery management workflows.\n- Worked on embedded control logic, sensor integration, and system debugging.\n- Contributed to PCB-related design validation and testing for prototype hardware.\n- Collaborated on improving charging, balancing, and monitoring functionality for embedded systems.",
     },
+    {
+      company: "UG Fellow at IIT Roorkee",
+      href: "https://www.linkedin.com/company/divyasampark-ihub-roorkee-for-devices-materials-and-technology-foundation/posts/?feedView=all",
+      badges: ["Internship"],
+      location: "Remote",
+      title: "Embedded Engineer",
+      logoUrl: "/ugFellow.jpg",
+      start: "Jan 2025",
+      end: "Dec 2025",
+      description:
+        "- Carried out research work in the scheme entitled ”Smart Pillars” by iHUB DivyaSampark setup under NM‐ICPS at IIT Roorkee.\n- Developed a prototype to detect the speed and number plate of a moving vehicle, sent data to a centralised database and issued ticket to the overspeeding vehicles.",
+    },
+    
   ],
   education: [
     {
       school: "National Institute of Technology, Rourkela",
       href: "https://nitrkl.ac.in/",
       degree: "B.Tech in Electronics & Instrumentation Engineering",
-      logoUrl: "/me.png",
+      logoUrl: "/nitrklLOGO.png",
       start: "Dec 2021",
       end: "May 2025",
     },
@@ -101,13 +199,13 @@ export const DATA = {
       video: "",
     },
     {
-      title: "MPU6050 I²C Driver Application",
+      title: "MPU6050 I2C Driver Application",
       href: "https://github.com/sovit1",
       dates: "Embedded Linux / Sensor Interfaces",
       active: true,
       description:
-        "Built a Linux userspace C application to acquire raw accelerometer data from an MPU6050 over I²C, using ioctl() for communication and GCC Linaro for cross-compilation on BeagleBone Black.",
-      technologies: ["C", "GCC Linaro", "I²C", "BeagleBone Black", "SSH"],
+        "Built a Linux userspace C application to acquire raw accelerometer data from an MPU6050 over I2C, using ioctl() for communication and GCC Linaro for cross-compilation on BeagleBone Black.",
+      technologies: ["C", "GCC Linaro", "I2C", "BeagleBone Black", "SSH"],
       links: [{ type: "GitHub", href: "https://github.com/sovit1", icon: <Icons.github className="size-3" /> }],
       image: "",
       video: "",
@@ -144,7 +242,8 @@ export const DATA = {
       location: "NIT Rourkela",
       description:
         "Built a 3-wheeled holonomic drive robot controlled via ROS and ESP32 over UDP for smooth omnidirectional motion and low-latency wireless control.",
-      image: "",
+      image: "/eyantra.svg",
+      result: "Participant",
       links: [] as HackathonLink[],
     },
     {
@@ -153,7 +252,18 @@ export const DATA = {
       location: "IIT Bombay",
       description:
         "Worked on a stress-sensor ideation project and secured runners-up position in the competition.",
-      image: "",
+      image: "/TIH-logo-scaled.webp",
+      result: "Runner-up",
+      links: [] as HackathonLink[],
+    },
+    {
+      title: "Chanakya Fellowship Award by IIT Roorkee",
+      dates: "Aug 2022",
+      location: "IIT Roorkee",
+      description:
+        "Worked on ANPR, speed detection systems and generating e-challan for over-speeding vehicles",
+      image: "/ugFellow.jpg",
+      result: "Awarded",
       links: [] as HackathonLink[],
     },
     {
@@ -162,8 +272,30 @@ export const DATA = {
       location: "IIT Roorkee",
       description:
         "Participated in the road-safety and management challenge and achieved runners-up position.",
-      image: "",
+      image: "/devbhoomi.jpeg",
+      result: "Runner-up",
       links: [] as HackathonLink[],
+    },
+    {
+      title: "Odisha JEE Rank 1",
+      dates: "Nov 2020",
+      location: "Govt. of Odisha",
+      description:
+        "Achieved Rank 1 among 40K students in the entrance exam for state government colleges of Odisha in the subjects of Mathematics, Physics and Chemistry.",
+      image: "/odishaGOV.png",
+      result: "Rank 1",
+      links: [
+        {
+          title: "Times of India",
+          href: "https://timesofindia.indiatimes.com/education/news/ojee-2020-results-announced-sovit-patel-btech-topper/articleshow/79082971.cms",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          title: "Indian Express",
+          href: "https://indianexpress.com/article/education/odisha-ojee-result-2020-released-ojee-nic-in-6980864/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
     },
   ],
 } as const;

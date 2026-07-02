@@ -6,29 +6,24 @@ import { Timeline, TimelineItem, TimelineConnectItem } from "@/components/timeli
 
 export default function HackathonsSection() {
   return (
-    <section id="hackathons" className="overflow-hidden">
+    <section id="hackathons">
       <div className="flex min-h-0 flex-col gap-y-8 w-full">
         <div className="flex flex-col gap-y-4 items-center justify-center">
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
             <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-              <span className="text-background text-sm font-medium">Hackathons</span>
+              <span className="text-background text-sm font-medium">Achievements</span>
             </div>
             <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
           </div>
-          <div className="flex flex-col gap-y-3 items-center justify-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">I like building things</h2>
-            <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-              During my time in university, I attended {DATA.hackathons.length}+
-              hackathons. People from around the country would come together and
-              build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.
-            </p>
-          </div>
         </div>
-        <Timeline>
+        <Timeline className="p-0">
           {DATA.hackathons.map((hackathon) => (
-            <TimelineItem key={hackathon.title + hackathon.dates} className="w-full flex items-start justify-between gap-10">
-              <TimelineConnectItem className="flex items-start justify-center">
+            <TimelineItem key={hackathon.title + hackathon.dates} className="w-full flex items-stretch gap-4 sm:gap-6">
+              <TimelineConnectItem
+                className="items-start pt-5"
+                lineClassName="group-data-[orientation=vertical]:top-[3.75rem] group-data-[orientation=vertical]:h-[calc(100%-0.5rem)]"
+              >
                 {hackathon.image ? (
                   <img
                     src={hackathon.image}
@@ -39,16 +34,27 @@ export default function HackathonsSection() {
                   <div className="size-10 bg-card z-10 shrink-0 overflow-hidden p-1 border rounded-full shadow ring-2 ring-border flex-none" />
                 )}
               </TimelineConnectItem>
-              <div className="flex flex-1 flex-col justify-start gap-2 min-w-0">
-                {hackathon.dates && (
-                  <time className="text-xs text-muted-foreground">{hackathon.dates}</time>
-                )}
-                {hackathon.title && (
-                  <h3 className="font-semibold leading-none">{hackathon.title}</h3>
-                )}
-                {hackathon.location && (
-                  <p className="text-sm text-muted-foreground">{hackathon.location}</p>
-                )}
+              <article className="flex flex-1 flex-col justify-start gap-3 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:ring-2 hover:ring-muted min-w-0">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex min-w-0 flex-col gap-1">
+                    {hackathon.title && (
+                      <h3 className="font-semibold leading-none">{hackathon.title}</h3>
+                    )}
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                      {hackathon.dates && <time>{hackathon.dates}</time>}
+                      {hackathon.dates && hackathon.location && <span aria-hidden>/</span>}
+                      {hackathon.location && <span>{hackathon.location}</span>}
+                    </div>
+                  </div>
+                  {hackathon.result && (
+                    <Badge
+                      variant="outline"
+                      className="h-6 shrink-0 px-2.5 text-[11px] font-semibold"
+                    >
+                      {hackathon.result}
+                    </Badge>
+                  )}
+                </div>
                 {hackathon.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed wrap-break-word">
                     {hackathon.description}
@@ -71,7 +77,7 @@ export default function HackathonsSection() {
                     ))}
                   </div>
                 )}
-              </div>
+              </article>
             </TimelineItem>
           ))}
         </Timeline>

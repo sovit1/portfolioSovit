@@ -17,11 +17,13 @@ export interface TimelineProps {
 export interface TimelineConnectItemProps {
   children: ReactNode;
   className?: string;
+  lineClassName?: string;
 }
 
 export function TimelineConnectItem({
   children,
   className,
+  lineClassName,
 }: TimelineConnectItemProps) {
   return (
     <div
@@ -39,7 +41,8 @@ export function TimelineConnectItem({
           "group-data-[orientation=vertical]:w-px",
           "group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=horizontal]:-translate-y-1/2",
           "group-data-[orientation=horizontal]:left-1/2 group-data-[orientation=horizontal]:w-[calc(50%+var(--timeline-gap)+50%)]",
-          "group-data-[orientation=horizontal]:h-px"
+          "group-data-[orientation=horizontal]:h-px",
+          lineClassName
         )}
       />
       <div className="relative z-20 shrink-0">{children}</div>
