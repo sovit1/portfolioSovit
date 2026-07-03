@@ -27,6 +27,16 @@ type HackathonLink = {
   icon: ReactNode;
 };
 
+type Hackathon = {
+  title: string;
+  dates: string;
+  location: string;
+  description: string;
+  image: string;
+  links: HackathonLink[];
+  rank?: string;
+};
+
 /*TODO: Add images/videos to github projects
 
 
@@ -244,6 +254,7 @@ export const DATA = {
         "Built a 3-wheeled holonomic drive robot controlled via ROS and ESP32 over UDP for smooth omnidirectional motion and low-latency wireless control.",
       image: "/eyantra.svg",
       links: [] as HackathonLink[],
+      rank: "Semi Finalist",
     },
     {
       title: "TIH-IoT Ideate'22",
@@ -253,6 +264,7 @@ export const DATA = {
         "Worked on a stress-sensor ideation project and secured runners-up position in the competition.",
       image: "/TIH-logo-scaled.webp",
       links: [] as HackathonLink[],
+      rank: "Runners-up",
     },
     {
       title: "Chanakya Fellowship Award by IIT Roorkee",
@@ -262,6 +274,7 @@ export const DATA = {
         "Worked on ANPR, speed detection systems and generating e-challan for over-speeding vehicles",
       image: "/ugFellow.jpg",
       links: [] as HackathonLink[],
+      rank: "Fellowship Award",
     },
     {
       title: "Devbhoomi Cyber Hackathon'22",
@@ -271,6 +284,7 @@ export const DATA = {
         "Participated in the road-safety and management challenge and achieved runners-up position.",
       image: "/devbhoomi.jpeg",
       links: [] as HackathonLink[],
+      rank: "Runners-up",
     },
     {
       title: "Odisha JEE Rank 1",
@@ -303,6 +317,7 @@ export const DATA = {
           ),
         },
       ],
+      rank: "Rank 1",
     },
   ],
 } as const;

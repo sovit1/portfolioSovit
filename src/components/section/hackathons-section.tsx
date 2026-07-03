@@ -20,6 +20,7 @@ export default function HackathonsSection() {
         <Timeline className="p-0">
           {DATA.hackathons.map((hackathon) => {
             const result = "result" in hackathon ? (hackathon as { result?: string }).result : undefined;
+            const rank = "rank" in hackathon ? (hackathon as { rank?: string }).rank : undefined;
 
             return (
             <TimelineItem key={hackathon.title + hackathon.dates} className="w-full flex items-stretch gap-4 sm:gap-6">
@@ -49,14 +50,21 @@ export default function HackathonsSection() {
                       {hackathon.location && <span>{hackathon.location}</span>}
                     </div>
                   </div>
-                  {result && (
-                    <Badge
-                      variant="outline"
-                      className="h-6 shrink-0 px-2.5 text-[11px] font-semibold"
-                    >
-                      {result}
-                    </Badge>
-                  )}
+                  <div className="flex flex-col gap-2 shrink-0">
+                    {rank && (
+                      <div className="bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 text-center">
+                        <span className="text-xs font-bold text-primary">{rank}</span>
+                      </div>
+                    )}
+                    {result && (
+                      <Badge
+                        variant="outline"
+                        className="h-6 shrink-0 px-2.5 text-[11px] font-semibold"
+                      >
+                        {result}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
                 {hackathon.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed wrap-break-word">
